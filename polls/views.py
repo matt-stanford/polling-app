@@ -5,15 +5,14 @@ def index(request):
     return render(request, 'pages/index.html', {})
 
 def polls(request):
-    polls = Question.objects.all
+    polls = Question.objects.order_by('-pub_date')
     return render(request, 'pages/polls.html', {'polls': polls})
 
 
 def poll(request, poll_id):
-    poll = Question.objects.filter(pk=poll_id)
-    choices = Choice.objects.all
-    context = {
-        'poll': poll,
-        'choices': choices
-    }
-    return render(request, 'pages/poll.html', context)
+    poll = Question.objects.get(pk=poll_id)
+    return render(request, 'pages/poll.html', {'poll': poll})
+
+def result(request, poll_id):
+    poll = Question.objects.get(pk=poll_id)
+    return render(request, 'pages/result.html', {'poll': poll})

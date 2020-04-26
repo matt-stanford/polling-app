@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <a href="{% url 'polls' %}" class="btn btn-secondary">Back To Polls</a>
-            <h2 class="text-center my-3">{{ poll.0 }}</h2>
-            {% for choice in choices %}
+            <h2 class="text-center my-3">{{ poll.question_text }}</h2>
+            {% for choice in poll.choice_set.all %}
                 <div class="custom-control custom-radio mt-2">
-                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio1">{{ choice }}</label>
+                    <input type="radio" id="customRadio {{ choice.id }}" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio {{ choice.id }}">{{ choice.choice_text }}</label>
                 </div>
             {% endfor %}
-            <button type="submit" class="btn btn-success btn-block mt-4">Vote</button>
+            <a href="{% url 'result' poll.id %}" class="btn btn-success btn-block mt-4">Vote</a>
         </div>
     </div>
 </div>

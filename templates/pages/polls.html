@@ -4,7 +4,6 @@
 <div class="container">
     <h2 class="text-center">Poll Questions</h2>
     <br>
-    <!-- <div class="d-flex justify-content-center"> -->
     
     {% if polls %}
         {% for poll in polls %}
@@ -14,7 +13,7 @@
                         <div class="card-body">
                         <h5 class="card-title mb-4">{{ poll.question_text }}</h5>
                         <a href="{% url 'poll' poll.id %}" class="btn btn-primary">Vote Now</a>
-                        <a href="{% url 'polls' %}" class="btn btn-secondary">Results</a>
+                        <a href="{% url 'result' poll.id %}" class="btn btn-secondary">Results</a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +21,6 @@
             <br>
         {% endfor %}
     {% endif %}
-    <!-- </div> -->
 </div>
 
 {% endblock %}
