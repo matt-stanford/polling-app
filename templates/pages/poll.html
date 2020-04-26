@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <a href="{% url 'polls' %}" class="btn btn-secondary">Back To Polls</a>
+            <h2 class="text-center my-3">{{ poll.0 }}</h2>
+            {% for choice in choices %}
+                <div class="custom-control custom-radio mt-2">
+                    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio1">{{ choice }}</label>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-success btn-block mt-4">Vote</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
