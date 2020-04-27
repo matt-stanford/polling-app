@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6 offset-md-3">
             <h2 class="text-center my-3">{{ poll.question_text }}</h2>
             <div class="card mt-5">
@@ -17,7 +17,8 @@
                 <a href="{% url 'poll' poll.id %}" class="btn btn-dark">Vote Again?</a>
             </div>
         </div>
-    </div>
+    </div> -->
+    {{ choice }}
 </div>
 
 {% endblock %}

@@ -6,13 +6,18 @@
         <div class="col-md-6 offset-md-3">
             <a href="{% url 'polls' %}" class="btn btn-secondary">Back To Polls</a>
             <h2 class="text-center my-3">{{ poll.question_text }}</h2>
-            {% for choice in poll.choice_set.all %}
+
+            <form action="{% url 'vote' poll.id %}" method="post" name='vote'>
+                {% csrf_token %}
+                {% for choice in poll.choice_set.all %}
                 <div class="custom-control custom-radio mt-2">
-                    <input type="radio" id="customRadio {{ choice.id }}" name="customRadio" class="custom-control-input">
+                    <input type="radio" id="customRadio {{ choice.id }}" name="choice" class="custom-control-input">
                     <label class="custom-control-label" for="customRadio {{ choice.id }}">{{ choice.choice_text }}</label>
                 </div>
-            {% endfor %}
-            <a href="{% url 'result' poll.id %}" class="btn btn-success btn-block mt-4">Vote</a>
+                {% endfor %}
+                <button type="submit" class="btn btn-success btn-block mt-4">Vote</button>
+            </form>
+
         </div>
     </div>
 </div>
